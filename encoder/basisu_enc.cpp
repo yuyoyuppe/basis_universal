@@ -29,6 +29,8 @@
 #include <windows.h>
 #endif
 
+namespace lodepng = lodepngbasis;
+
 namespace basisu
 {
 	uint64_t interval_timer::g_init_ticks, interval_timer::g_freq;
@@ -294,7 +296,7 @@ namespace basisu
 		{
 			// Inspect the image first on 32-bit builds, to see if the image would require too much memory.
 			lodepng::State state;
-			err = lodepng_inspect(&w, &h, &state, pBuf, buf_size);
+			err = lodepngbasis_inspect(&w, &h, &state, pBuf, buf_size);
 			if ((err != 0) || (!w) || (!h))
 				return false;
 
